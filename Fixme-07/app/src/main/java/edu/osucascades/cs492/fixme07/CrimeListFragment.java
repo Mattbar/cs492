@@ -64,7 +64,7 @@ public class CrimeListFragment extends Fragment {
     }
 
     private class CrimeAdapter extends RecyclerView.Adapter<CrimeHolder> {
-    private List<Crime> mCrimes;
+        private List<Crime> mCrimes;
 
         public CrimeAdapter(List<Crime> crimes) {
             mCrimes = crimes;
@@ -78,7 +78,7 @@ public class CrimeListFragment extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(CrimeHolder holder, integer position) {
+        public void onBindViewHolder(CrimeHolder holder, int position) {
 
             Crime crime = mCrimes.get(position);
             holder.bind(crime);
