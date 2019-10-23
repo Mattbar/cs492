@@ -24,7 +24,7 @@ public class Crime {
         mDate = new Date();
         Random rand = new Random();
         if (rand.nextInt(2) == 0) {
-            mPoliceRequired = NULL;
+            mPoliceRequired = false;
         } else {
             mPoliceRequired = true;
         }
