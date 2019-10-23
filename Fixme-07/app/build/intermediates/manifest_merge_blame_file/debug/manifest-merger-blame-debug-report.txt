@@ -25,33 +25,34 @@
 17-->/home/mattbarnes/Android/cs492/Fixme-07/app/src/main/AndroidManifest.xml:9:9-54
 18        android:supportsRtl="true"
 18-->/home/mattbarnes/Android/cs492/Fixme-07/app/src/main/AndroidManifest.xml:10:9-35
-19        android:theme="@style/AppTheme" >
-19-->/home/mattbarnes/Android/cs492/Fixme-07/app/src/main/AndroidManifest.xml:11:9-40
-20        <activity android:name="edu.osucascades.cs492.fixme07.CrimeListActivity" >
-20-->/home/mattbarnes/Android/cs492/Fixme-07/app/src/main/AndroidManifest.xml:12:9-18:20
-20-->/home/mattbarnes/Android/cs492/Fixme-07/app/src/main/AndroidManifest.xml:12:19-52
-21            <intent-filter>
-21-->/home/mattbarnes/Android/cs492/Fixme-07/app/src/main/AndroidManifest.xml:13:13-17:29
-22                <action android:name="android.intent.action.MAIN" />
-22-->/home/mattbarnes/Android/cs492/Fixme-07/app/src/main/AndroidManifest.xml:14:17-69
-22-->/home/mattbarnes/Android/cs492/Fixme-07/app/src/main/AndroidManifest.xml:14:25-66
-23
-24                <category android:name="android.intent.category.LAUNCHER" />
-24-->/home/mattbarnes/Android/cs492/Fixme-07/app/src/main/AndroidManifest.xml:16:17-77
-24-->/home/mattbarnes/Android/cs492/Fixme-07/app/src/main/AndroidManifest.xml:16:27-74
-25            </intent-filter>
-26        </activity>
-27        <activity android:name="edu.osucascades.cs492.fixme07.MainActivity" >
-27-->/home/mattbarnes/Android/cs492/Fixme-07/app/src/main/AndroidManifest.xml:19:9-25:20
-27-->/home/mattbarnes/Android/cs492/Fixme-07/app/src/main/AndroidManifest.xml:19:19-47
-28
-29            <!-- <intent-filter> -->
-30            <!-- <action android:name="android.intent.action.MAIN" /> -->
-31
+19        android:testOnly="true"
+20        android:theme="@style/AppTheme" >
+20-->/home/mattbarnes/Android/cs492/Fixme-07/app/src/main/AndroidManifest.xml:11:9-40
+21        <activity android:name="edu.osucascades.cs492.fixme07.CrimeListActivity" >
+21-->/home/mattbarnes/Android/cs492/Fixme-07/app/src/main/AndroidManifest.xml:12:9-18:20
+21-->/home/mattbarnes/Android/cs492/Fixme-07/app/src/main/AndroidManifest.xml:12:19-52
+22            <intent-filter>
+22-->/home/mattbarnes/Android/cs492/Fixme-07/app/src/main/AndroidManifest.xml:13:13-17:29
+23                <action android:name="android.intent.action.MAIN" />
+23-->/home/mattbarnes/Android/cs492/Fixme-07/app/src/main/AndroidManifest.xml:14:17-69
+23-->/home/mattbarnes/Android/cs492/Fixme-07/app/src/main/AndroidManifest.xml:14:25-66
+24
+25                <category android:name="android.intent.category.LAUNCHER" />
+25-->/home/mattbarnes/Android/cs492/Fixme-07/app/src/main/AndroidManifest.xml:16:17-77
+25-->/home/mattbarnes/Android/cs492/Fixme-07/app/src/main/AndroidManifest.xml:16:27-74
+26            </intent-filter>
+27        </activity>
+28        <activity android:name="edu.osucascades.cs492.fixme07.MainActivity" >
+28-->/home/mattbarnes/Android/cs492/Fixme-07/app/src/main/AndroidManifest.xml:19:9-25:20
+28-->/home/mattbarnes/Android/cs492/Fixme-07/app/src/main/AndroidManifest.xml:19:19-47
+29
+30            <!-- <intent-filter> -->
+31            <!-- <action android:name="android.intent.action.MAIN" /> -->
 32
-33            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-34            <!-- </intent-filter> -->
-35        </activity>
-36    </application>
-37
-38</manifest>
+33
+34            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+35            <!-- </intent-filter> -->
+36        </activity>
+37    </application>
+38
+39</manifest>
