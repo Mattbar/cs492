@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Name Mangler</string>
+    <string name="first_name_label">First Name</string>
+    <string name="mangle_button">Mangle!</string>
+    <string name="reset_button">Reset</string>
+    <string name="re_mangle_button">Re-mangle!</string>
+    
+    <string name="last_tyger">Tyger</string>
+    <string name="last_vaider">Vaider</string>
+    <string name="last_frier">Frier</string>
+    <string name="last_gladis">Gladis</string>
+    <string name="last_esta">Esta</string>
+
+    <string name="missing_name">I CANNOT MANGLE WHAT I DO NOT HAVE!!! TRY AGAIN</string>
+</resources>
