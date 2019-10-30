@@ -49,7 +49,6 @@ public class CrimeListFragment extends Fragment {
         } else {
             mAdapter.notifyItemChanged(mClickedItemPos);
         }
-;
     }
 
     private class CrimeHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
