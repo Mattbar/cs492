@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public class CrimeLab {
     private  static CrimeLab sCrimeLab;
-    private Map<UUID,Crime> mCrimes;
+    private List<Crime> mCrimes;
 
     public static CrimeLab get(Context context){
         if (sCrimeLab == null) {
@@ -20,22 +20,27 @@ public class CrimeLab {
     }
 
     private CrimeLab(Context context){
-        mCrimes = new LinkedHashMap<>();
-        for(int i = 0; i < 100; i++){
-            Crime crime = new Crime();
-
-            crime.setSolved(i % 2 == 0 ); // Every other one
-            crime.setRequiresPolice(false);
-            crime.setTitle("Crime #" + i);
-            mCrimes.put(crime.getId(), crime);
-        }
+        mCrimes = new ArrayList<>();
     }
 
     public List<Crime> getCrimes(){
-        return new ArrayList<>(mCrimes.values());
+        return mCrimes;
     }
 
     public Crime getCrime(UUID id) {
-        return mCrimes.get(id);
+        for (Crime crime : mCrimes) {
+            if (crime.getId().equals(id)) {
+                return crime;
+            }
+        }
+        return null;
+    }
+
+    public void addCrime(Crime c) {
+        mCrimes.add(c);
+    }
+
+    public void removeCrime(Crime c) {
+        mCrimes.remove(c);
     }
 }
