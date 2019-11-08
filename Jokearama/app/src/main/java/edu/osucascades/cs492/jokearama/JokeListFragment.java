@@ -19,6 +19,10 @@ public class JokeListFragment extends Fragment {
     private RecyclerView mJokeRecyclerView;
     private JokeAdapter mAdapter;
     private int mClickedItemPos;
+    private TextView mJokesTotal;
+    private TextView mCompleted;
+    private int mTotalCompleted = 0;
+    private List<Joke> mJokes;
 
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container, Bundle savedInstanceState){
@@ -26,6 +30,9 @@ public class JokeListFragment extends Fragment {
 
         mJokeRecyclerView = view.findViewById(R.id.joke_recycler_view);
         mJokeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        mJokesTotal = view.findViewById(R.id.Jokes_total);
+        mCompleted = view.findViewById(R.id.Jokes_completed);
 
         updateUI();
 
@@ -41,6 +48,11 @@ public class JokeListFragment extends Fragment {
     private void updateUI(){
         JokeLab jokeLab = JokeLab.get(getActivity());
         List<Joke> jokes = jokeLab.getJokes();
+
+        //mJokesTotal.append(jokes.size() + " jokes");
+        updateCompleted(jokes);
+
+
         if(mAdapter == null){
             mAdapter = new JokeAdapter(jokes);
             mJokeRecyclerView.setAdapter(mAdapter);
@@ -58,6 +70,8 @@ public class JokeListFragment extends Fragment {
 
             itemView.setOnClickListener(this);
             mTitleTextView = (TextView) itemView.findViewById(R.id.joke_title);
+
+
 
         }
 
@@ -81,7 +95,6 @@ public class JokeListFragment extends Fragment {
     }
 
     private class JokeAdapter extends RecyclerView.Adapter<JokeHolder> {
-        private List<Joke> mJokes;
 
         public JokeAdapter(List<Joke> jokes){
             mJokes = jokes;
@@ -90,13 +103,17 @@ public class JokeListFragment extends Fragment {
         @Override
         public JokeHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
+
+
+
+
             return new JokeHolder(layoutInflater, parent, viewType);
         }
 
         @Override
         public void onBindViewHolder(JokeHolder holder, int position) {
-            Joke crime = mJokes.get(position);
-            holder.bind(crime);
+            Joke joke = mJokes.get(position);
+            holder.bind(joke);
         }
 
         @Override
@@ -108,6 +125,21 @@ public class JokeListFragment extends Fragment {
         public int getItemViewType(int position) {
             return R.layout.list_item_joke;
 
+        }
+    }
+
+
+    private void updateCompleted(List<Joke> jokes){
+        getTotalComplet(jokes);
+        mCompleted.setText(mTotalCompleted + " completed");
+    }
+
+    private void getTotalComplet(List<Joke> jokes) {
+        mTotalCompleted = 0;
+        for(int i = 0; i < jokes.size(); i++){
+            if (jokes.get(i).isFinished()){
+                mTotalCompleted++;
+            }
         }
     }
 

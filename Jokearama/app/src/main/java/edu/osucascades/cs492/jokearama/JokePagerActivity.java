@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -18,6 +20,9 @@ public class JokePagerActivity extends AppCompatActivity {
     private static final String EXTRA_JOKE_ID = "edu.osucascades.cs492.jokearama.joke_id";
 
     private ViewPager mViewPager;
+    private TextView mJokesTotal;
+    private TextView mCompleted;
+    private int mTotalCompleted = 0;
     private List<Joke> mJokes;
 
     public static Intent newIntent(Context packageContext, UUID crimeId){
@@ -34,8 +39,8 @@ public class JokePagerActivity extends AppCompatActivity {
         UUID crimeId = (UUID) getIntent().getSerializableExtra(EXTRA_JOKE_ID);
 
         mViewPager = (ViewPager) findViewById(R.id.joke_view_pager);
-
         mJokes = JokeLab.get(this).getJokes();
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
             @Override
@@ -49,6 +54,8 @@ public class JokePagerActivity extends AppCompatActivity {
                 return mJokes.size();
             }
         });
+
+
 
         for (int i = 0; i < mJokes.size(); i++){
             if(mJokes.get(i).getId().equals(crimeId)){
@@ -65,6 +72,7 @@ public class JokePagerActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
+                updateCompleted();
 
             }
 
@@ -72,7 +80,29 @@ public class JokePagerActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {
 
             }
+
+
         });
 
+        mJokesTotal = (TextView) findViewById(R.id.Jokes_total);
+        mJokesTotal.append(mJokes.size() + " jokes");
+         updateCompleted();
+
+
+    }
+
+    private void updateCompleted(){
+        getTotalComplet();
+        mCompleted = findViewById(R.id.Jokes_completed);
+        mCompleted.setText(mTotalCompleted + " completed");
+    }
+
+    private void getTotalComplet() {
+        mTotalCompleted = 0;
+        for(int i = 0; i < mJokes.size(); i++){
+            if (mJokes.get(i).isFinished()){
+                mTotalCompleted++;
+            }
+        }
     }
 }
