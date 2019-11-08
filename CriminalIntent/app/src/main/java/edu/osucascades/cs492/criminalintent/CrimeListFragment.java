@@ -22,6 +22,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import static android.view.View.INVISIBLE;
+import static android.view.View.VISIBLE;
+
 public class CrimeListFragment extends Fragment {
     private static final String SAVED_SUBTITLE_VISIBLE = "subtitle";
 
@@ -54,6 +57,7 @@ public class CrimeListFragment extends Fragment {
                 createNewCrime();
             }
         });
+
 
         if (savedInstanceState != null) {
             mSubtitleVisible = savedInstanceState.getBoolean(SAVED_SUBTITLE_VISIBLE);
@@ -128,6 +132,14 @@ public class CrimeListFragment extends Fragment {
             mAdapter.notifyItemChanged(mClickedItemPos);
         }
 
+        if(crimes.size() > 0){
+            mEmptyTextView.setVisibility(INVISIBLE);
+            mNewCrimeButton.setVisibility(INVISIBLE);
+        } else {
+            mEmptyTextView.setVisibility(VISIBLE);
+            mNewCrimeButton.setVisibility(VISIBLE);
+        }
+
         updateSubtitle();
     }
 
@@ -161,7 +173,7 @@ public class CrimeListFragment extends Fragment {
             mTitleTextView.setText(mCrime.getTitle());
             mDateTextView.setText(setFormattedDate(mCrime.getDate()));
             mTimeTextView.setText(setFormattedTime(mCrime.getTime()));
-            mSolvedImageView.setVisibility(mCrime.isSolved() ? View.VISIBLE : View.GONE);
+            mSolvedImageView.setVisibility(mCrime.isSolved() ? VISIBLE : View.GONE);
         }
 
         private String setFormattedDate(Date date) {
