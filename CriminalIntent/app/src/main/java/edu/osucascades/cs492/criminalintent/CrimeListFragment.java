@@ -54,6 +54,7 @@ public class CrimeListFragment extends Fragment {
     private class CrimeHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView mTitleTextView;
         private TextView mDateTextView;
+        private TextView mTimeTextView;
         private Crime mCrime;
         private ImageView mSolvedImageView;
 
@@ -63,6 +64,7 @@ public class CrimeListFragment extends Fragment {
             itemView.setOnClickListener(this);
             mTitleTextView = (TextView) itemView.findViewById(R.id.crime_title);
             mDateTextView = (TextView) itemView.findViewById(R.id.crime_date);
+            mTimeTextView = (TextView) itemView.findViewById(R.id.crime_time);
             mSolvedImageView = itemView.findViewById(R.id.crime_solved);
 
         }
@@ -71,12 +73,18 @@ public class CrimeListFragment extends Fragment {
             mCrime = crime;
             mTitleTextView.setText(mCrime.getTitle());
             mDateTextView.setText(setFormattedDate(mCrime.getDate()));
+            mTimeTextView.setText(setFormattedTime(mCrime.getTime()));
             mSolvedImageView.setVisibility(mCrime.isSolved() ? View.VISIBLE : View.GONE);
         }
 
         private String setFormattedDate(Date date) {
             SimpleDateFormat formatter = new SimpleDateFormat("EEEE, MMM d, yyyy", Locale.US);
             return formatter.format(date);
+        }
+
+        private String setFormattedTime(Date time){
+            SimpleDateFormat formatter = new SimpleDateFormat("HH:mm", Locale.US);
+            return formatter.format(time);
         }
 
         @Override

@@ -76,7 +76,6 @@ public class CrimeFragment extends Fragment {
 
         mDateButton = (Button) v.findViewById(R.id.crime_date);
         updateDate();
-        mDateButton.setText(mCrime.getDate().toString());
         mDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,12 +109,13 @@ public class CrimeFragment extends Fragment {
         return v;
     }
 
+
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode != Activity.RESULT_OK) {
             return;
         }
-
         if (requestCode == REQUEST_DATE) {
             Date date = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
             mCrime.setDate(date);
@@ -130,13 +130,11 @@ public class CrimeFragment extends Fragment {
     }
 
     private void updateDate() {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
-        String crimeDate = formatter.format(mCrime.getDate());
-        mDateButton.setText(crimeDate);
+        mDateButton.setText(mCrime.getDate().toString());
     }
+
     private void updateTime() {
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm", Locale.US);
-        String crimeTime = formatter.format(mCrime.getTime());
-        mTimeButton.setText(crimeTime);
+        mTimeButton.setText(formatter.format(mCrime.getTime()));
     }
 }
